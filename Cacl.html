@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        function myck(type) {
+            var nums1 = jQuery("#num1");
+            var nums2 = jQuery("#num2");
+            var resut = jQuery("#result");
+            if(nums1.val().trim() == "") {
+                alert("请输入数字1！");
+                nums1.focus();
+                return false;
+            }
+            if(nums2.val().trim() == "") {
+                alert("请输入数字2！");
+                nums2.focus();
+                return false;
+            }
+            if(type == 1) {
+                resut = parseInt(nums1.val()) + parseInt(nums2.val());
+                jQuery("#result").html("<h2>计算结果为：<strong style='color: brown'>" + resut + "</strong></h2>");
+            } else if(type == 2) {
+                resut = parseInt(nums1.val()) - parseInt(nums2.val());
+                jQuery("#result").html("<h2>计算结果为：<strong style='color: brown'>" + resut + "</strong></h2>");
+            } else if(type == 3) {
+                resut = parseInt(nums1.val()) * parseInt(nums2.val());
+                jQuery("#result").html("<h2>计算结果为：<strong style='color: brown'>" + resut + "</strong></h2>");
+            } else if(type == 4) {
+                var totle = jQuery("#result")
+                totle = parseFloat(nums1.val()) / parseFloat(nums2.val());
+                jQuery("#result").html("<h2>计算结果为：<strong style='color: brown'>" + totle + "</strong></h2>");
+            } else if(type == 5) {
+                if(confirm("是否清空？")) {
+                    nums1.val("");
+                    nums2.val("");
+                    jQuery("#result").html("");
+                }
+                return false;
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div style="margin-top: 100px;text-align: center">
+        <h1>计算器</h1><p></p>
+        数字1：<input id = "num1" type = "number" placeholder="请输入数字1"><p></p>
+        数字1：<input id = "num2" type = "number" placeholder="请输入数字2"><p></p>
+
+        <div style="margin-top: 20px;text-align: center">
+            <input type = "button" value="+" onclick="myck(1)">
+            <input type = "button" value="-" onclick="myck(2)">
+            <input type = "button" value="*" onclick="myck(3)">
+            <input type = "button" value="/" onclick="myck(4)">
+            <input type = "button" value="empty" onclick="myck(5)">
+        </div>
+
+        <div id = "result" style="margin-top: 100px">
+
+        </div>
+    </div>
+
+</body>
+</html>
